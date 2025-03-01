@@ -2,9 +2,9 @@ import React from 'react'
 import CartIcon from "../assets/basketIcon.svg"
 import styled from 'styled-components'
 
-export const Basket = () => {
+export const Basket = ({openBasket}) => {
   return (
-   <BasketWrapper>
+   <BasketWrapper onClick={openBasket}>
     <div>
     <img src={CartIcon} alt="" />
     <p>Your Cart</p>

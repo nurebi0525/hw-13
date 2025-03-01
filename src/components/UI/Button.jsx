@@ -64,10 +64,10 @@ function getButtonStyles(variant) {
 }
 
 export const Button = (props) => {
-  const { children, icon = "", variant = "default" } = props;
+  const { children, icon = "", variant = "default" , ...rest} = props;
 
   return (
-    <StyledButton variant={variant} children={Boolean(children)}>
+    <StyledButton variant={variant} children={Boolean(children)} {...rest}>
       {icon && <span>{icon}</span>}
       {children}
     </StyledButton>

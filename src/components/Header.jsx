@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../styles/color'
 import { Basket } from './Basket'
+import { Modal } from './UI/Modal'
+import { OrderBasket } from './totalAmount/OrderBasket'
 
 export const Header = () => {
+  const [basket, setBasket] = useState(false);
+
+  function basketModalHandler() {
+    setBasket((prevState) => !prevState)
+  }
   return (
-    <StyledHeader>
-    <Wrapper>
-        <Styledlogo>ReactMeals</Styledlogo>
-        <Basket/>
-    </Wrapper>
-    </StyledHeader>
+    <>
+    <Modal isOpen={basket} onClose={basketModalHandler}>
+      <OrderBasket onClose={basketModalHandler}/>
+      </Modal>
+      <StyledHeader>
+      <Wrapper>
+          <Styledlogo>ReactMeals</Styledlogo>
+          <Basket openBasket={basketModalHandler}/>
+      </Wrapper>
+      </StyledHeader>
+    </>
   )
 }
 
